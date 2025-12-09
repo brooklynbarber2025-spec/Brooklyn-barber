@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Peluquería</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1 class="system-name">Sistema de Gestión de Peluquería</h1>
+                <p class="user-role">Gerente de Peluquería</p>
+                <p class="service-desc">Gestión integral de barberías y peluquerías</p>
+                <p class="plan-expiry">Plan vence: 31/12/2024</p>
+            </div>
+            <div class="header-right">
+                <button class="nav-btn">Inicio</button>
+                <button class="nav-btn">Perfil</button>
+                <button class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Welcome Block -->
+        <section class="welcome-block" id="welcome-section">
+            <div class="welcome-content">
+                <h2>Bienvenido/a Usuario – Gerente de Peluquería</h2>
+                <p>La plataforma permite gestionar la barbería o peluquería de manera inteligente y eficiente.</p>
+            </div>
+            <div class="welcome-actions">
+                <button class="quick-sale-btn">Venta rápida</button>
+            </div>
+        </section>
+
+        <!-- Dashboard Modules -->
+        <section class="dashboard-modules" id="dashboard-modules">
+            <div class="module-card">
+                <i class="fas fa-calendar-check"></i>
+                <h3>Turnos Pendientes</h3>
+                <p class="module-value">0</p>
+                <p class="module-desc">Pendientes de confirmar hoy</p>
+            </div>
+            <div class="module-card">
+                <i class="fas fa-dollar-sign"></i>
+                <h3>Neto del Mes</h3>
+                <p class="module-value">$0</p>
+                <p class="module-desc">Acumulado al 2025-12-31</p>
+            </div>
+            <div class="module-card">
+                <i class="fas fa-boxes"></i>
+                <h3>Inventario</h3>
+                <p class="module-value">0</p>
+                <p class="module-desc">Todo en orden</p>
+            </div>
+            <div class="module-card">
+                <i class="fas fa-users"></i>
+                <h3>Clientes Registrados</h3>
+                <p class="module-value">0</p>
+                <p class="module-desc">Registrados en la cartera</p>
+            </div>
+            <div class="module-card">
+                <i class="fas fa-user-tie"></i>
+                <h3>Empleados Activos</h3>
+                <p class="module-value">1</p>
+                <p class="module-desc">Barberos en sistema</p>
+            </div>
+        </section>
+
+        <!-- Turnos Section -->
+        <section class="turnos-section" id="turnos-section" style="display: none;">
+            <div class="agenda-header">
+                <div class="agenda-info">
+                    <h2>Agenda Diaria</h2>
+                    <p>Permite gestionar los turnos de los barberos de manera eficiente.</p>
+                </div>
+                <div class="agenda-controls">
+                    <button class="date-btn"><i class="fas fa-chevron-left"></i></button>
+                    <span class="current-date">Lunes, 12 de Agosto 2024</span>
+                    <button class="date-btn"><i class="fas fa-chevron-right"></i></button>
+                    <select class="day-selector">
+                        <option>Hoy</option>
+                        <option>Mañana</option>
+                        <option>Seleccionar fecha</option>
+                    </select>
+                </div>
+            </div>
+            <div class="agenda-grid">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Hora</th>
+                            <th>Barbero 1</th>
+                            <th>Barbero 2</th>
+                            <th>Barbero 3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>9:00</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>9:30</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>10:00</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>10:30</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>11:00</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>11:30</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>12:00</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>12:30</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>13:00</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>13:30</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>14:00</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>14:30</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>15:00</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>15:30</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>16:00</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>16:30</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>17:00</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>17:30</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>18:00</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Empleados Section -->
+        <section class="empleados-section" id="empleados-section" style="display: none;">
+            <div class="empleados-header">
+                <div class="empleados-info">
+                    <h2>Gestión de Empleados</h2>
+                    <p id="empleados-count">Empleados registrados: 1</p>
+                </div>
+                <div class="empleados-actions">
+                    <button class="sort-btn">Ordenar Empleados</button>
+                    <button class="add-empleado-btn" id="add-empleado-btn">
+                        <i class="fas fa-plus"></i> Nuevo empleado
+                    </button>
+                </div>
+            </div>
+            <div class="empleados-table-container">
+                <table class="empleados-table">
+                    <thead>
+                        <tr>
+                            <th>Prioridad</th>
+                            <th>Nombre</th>
+                            <th>DNI / Iniciar sesión</th>
+                            <th>Comisión</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="empleados-tbody">
+                        <tr>
+                            <td>1</td>
+                            <td>Barbero 1</td>
+                            <td>12345678</td>
+                            <td>10%</td>
+                            <td><span class="status-badge active">Activo</span></td>
+                            <td>
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <!-- Side Panel -->
+    <div class="side-panel" id="side-panel">
+        <div class="panel-header">
+            <h3>Menú</h3>
+        </div>
+        <ul class="menu-list">
+            <li><i class="fas fa-tachometer-alt"></i> Panel General</li>
+            <li><i class="fas fa-calendar-alt"></i> Turnos</li>
+            <li><i class="fas fa-users"></i> Clientes</li>
+            <li><i class="fas fa-user-tie"></i> Empleados</li>
+            <li><i class="fas fa-cut"></i> Servicios</li>
+            <li><i class="fas fa-cash-register"></i> Ventas</li>
+            <li><i class="fas fa-boxes"></i> Existencias</li>
+            <li><i class="fas fa-cog"></i> Configuración</li>
+            <li><i class="fas fa-sign-out-alt"></i> Cerrar sesión</li>
+        </ul>
+    </div>
+
+    <!-- Modal for New Employee -->
+    <div class="modal-overlay" id="empleado-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Nuevo empleado</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="empleado-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" placeholder="Ej. Lean Martínez">
+                    </div>
+                    <div class="form-group">
+                        <label for="dni">Documento de Identidad (DNI) — Iniciar sesión</label>
+                        <input type="text" id="dni" placeholder="Ejemplo 34567890">
+                    </div>
+                    <div class="password-info">
+                        <label>Contraseña de Acceso</label>
+                        <div class="password-display" id="password-display">Admin1234</div>
+                        <small>El empleado iniciará sesión usando su DNI y esta contraseña.</small>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="comision">Porcentaje de Comisión (%)</label>
+                            <input type="number" id="comision" placeholder="10" min="0" max="100">
+                        </div>
+                        <div class="form-group half">
+                            <label for="prioridad">Prioridad (1 es el primero)</label>
+                            <input type="number" id="prioridad" placeholder="1" min="1">
+                        </div>
+                    </div>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="activo" checked>
+                            Empleado Activo
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary">Cancelar</button>
+                <button class="btn-primary">Crear empleado</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
