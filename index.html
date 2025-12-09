@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Peluquería</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1 class="system-name">Sistema de Gestión de Peluquería</h1>
+                <p class="user-role">Gerente de Peluquería</p>
+                <p class="service-desc">Gestión integral de barberías y peluquerías</p>
+                <p class="plan-expiry">Plan vence: 31/12/2024</p>
+            </div>
+            <div class="header-right">
+                <button class="nav-btn">Inicio</button>
+                <button class="nav-btn">Perfil</button>
+                <button class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Welcome Block -->
+        <section class="welcome-block" id="welcome-section">
+            <div class="welcome-content">
+                <h2>Bienvenido/a Usuario – Gerente de Peluquería</h2>
+                <p>La plataforma permite gestionar la barbería o peluquería de manera inteligente y eficiente.</p>
+            </div>
+            <div class="welcome-actions">
+                <button class="quick-sale-btn" id="quick-sale-welcome-btn">Venta rápida</button>
+            </div>
+        </section>
+
+        <!-- Dashboard Modules -->
+        <section class="dashboard-modules" id="dashboard-modules">
+            <div class="module-card">
+                <i class="fas fa-calendar-check"></i>
+                <h3>Turnos Pendientes</h3>
+                <p class="module-value">0</p>
+                <p class="module-desc">Pendientes de confirmar hoy</p>
+            </div>
+            <div class="module-card">
+                <i class="fas fa-dollar-sign"></i>
+                <h3>Neto del Mes</h3>
+                <p class="module-value">$0</p>
+                <p class="module-desc">Acumulado al 2025-12-31</p>
+            </div>
+            <div class="module-card">
+                <i class="fas fa-boxes"></i>
+                <h3>Inventario</h3>
+                <p class="module-value">0</p>
+                <p class="module-desc">Todo en orden</p>
+            </div>
+            <div class="module-card">
+                <i class="fas fa-users"></i>
+                <h3>Clientes Registrados</h3>
+                <p class="module-value">0</p>
+                <p class="module-desc">Registrados en la cartera</p>
+            </div>
+            <div class="module-card">
+                <i class="fas fa-user-tie"></i>
+                <h3>Empleados Activos</h3>
+                <p class="module-value">1</p>
+                <p class="module-desc">Barberos en sistema</p>
+            </div>
+        </section>
+
+        <!-- Turnos Section -->
+        <section class="turnos-section" id="turnos-section" style="display: none;">
+            <div class="agenda-header">
+                <div class="agenda-info">
+                    <h2>Agenda Diaria</h2>
+                    <p>Permite gestionar los turnos de los barberos de manera eficiente.</p>
+                </div>
+                <div class="agenda-controls">
+                    <button class="date-btn"><i class="fas fa-chevron-left"></i></button>
+                    <span class="current-date">Lunes, 12 de Agosto 2024</span>
+                    <button class="date-btn"><i class="fas fa-chevron-right"></i></button>
+                    <select class="day-selector">
+                        <option>Hoy</option>
+                        <option>Mañana</option>
+                        <option>Seleccionar fecha</option>
+                    </select>
+                </div>
+            </div>
+            <div class="agenda-grid">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Hora</th>
+                            <th>Barbero 1</th>
+                            <th>Barbero 2</th>
+                            <th>Barbero 3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>9:00</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>9:30</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>10:00</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>10:30</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>11:00</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>11:30</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>12:00</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>12:30</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>13:00</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>13:30</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>14:00</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>14:30</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>15:00</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>15:30</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>16:00</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>16:30</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>17:00</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>17:30</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                        <tr><td>18:00</td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td><td><button class="add-turno-btn">+</button></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Empleados Section -->
+        <section class="empleados-section" id="empleados-section" style="display: none;">
+            <div class="empleados-header">
+                <div class="empleados-info">
+                    <h2>Gestión de Empleados</h2>
+                    <p id="empleados-count">Empleados registrados: 1</p>
+                </div>
+                <div class="empleados-actions">
+                    <button class="sort-btn">Ordenar Empleados</button>
+                    <button class="add-empleado-btn" id="add-empleado-btn">
+                        <i class="fas fa-plus"></i> Nuevo empleado
+                    </button>
+                </div>
+            </div>
+            <div class="empleados-table-container">
+                <table class="empleados-table">
+                    <thead>
+                        <tr>
+                            <th>Prioridad</th>
+                            <th>Nombre</th>
+                            <th>DNI / Iniciar sesión</th>
+                            <th>Comisión</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="empleados-tbody">
+                        <tr>
+                            <td>1</td>
+                            <td>Barbero 1</td>
+                            <td>12345678</td>
+                            <td>10%</td>
+                            <td><span class="status-badge active">Activo</span></td>
+                            <td>
+                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Clientes Section -->
+        <section class="clientes-section" id="clientes-section" style="display: none;">
+            <div class="clientes-header">
+                <div class="clientes-info">
+                    <h2>Cartera de clientes</h2>
+                    <p id="clientes-count">0 clientes registrados. El contador de visitas es la fidelidad.</p>
+                </div>
+                <div class="clientes-actions">
+                    <input type="text" id="clientes-search" placeholder="Buscar clientes..." class="search-input">
+                    <button class="add-cliente-btn" id="add-cliente-btn">
+                        <i class="fas fa-plus"></i> Nuevo
+                    </button>
+                </div>
+            </div>
+            <div class="clientes-content">
+                <div class="empty-state" id="clientes-empty">
+                    <div class="empty-state-content">
+                        <i class="fas fa-users"></i>
+                        <h3>No se encontraron clientes</h3>
+                        <p>Comienza creando el primero ahora</p>
+                        <button class="create-first-btn" id="create-first-cliente-btn">Crear el primero ahora</button>
+                    </div>
+                </div>
+                <div class="clientes-table-container" id="clientes-table-container" style="display: none;">
+                    <table class="clientes-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Teléfono</th>
+                                <th>Correo electrónico</th>
+                                <th>Notas</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientes-tbody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Servicios Section -->
+        <section class="servicios-section" id="servicios-section" style="display: none;">
+            <div class="servicios-header">
+                <div class="servicios-info">
+                    <h2>Catálogo de Servicios</h2>
+                    <p>Definir los precios de tus cortes y productos</p>
+                </div>
+                <div class="servicios-actions">
+                    <button class="add-servicio-btn" id="add-servicio-btn">
+                        <i class="fas fa-plus"></i> Nuevo Servicio
+                    </button>
+                </div>
+            </div>
+            <div class="servicios-content">
+                <div class="empty-state" id="servicios-empty">
+                    <div class="empty-state-content">
+                        <i class="fas fa-cut"></i>
+                        <h3>No tienes servicios configurados</h3>
+                        <p>Crea el primero ahora</p>
+                        <button class="create-first-btn" id="create-first-servicio-btn">Crear el primero ahora</button>
+                    </div>
+                </div>
+                <div class="servicios-table-container" id="servicios-table-container" style="display: none;">
+                    <table class="servicios-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre del servicio</th>
+                                <th>Precio ($)</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="servicios-tbody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ventas Section -->
+        <section class="ventas-section" id="ventas-section" style="display: none;" role="region" aria-labelledby="ventas-heading">
+            <div class="ventas-header">
+                <div class="ventas-info">
+                    <h2 id="ventas-heading">Historial de Ventas y Gastos</h2>
+                    <p>Gestión completa de ingresos y egresos de la barbería</p>
+                </div>
+                <div class="ventas-actions">
+                    <button class="quick-sale-btn" id="quick-sale-btn" aria-label="Abrir modal para nueva venta rápida">
+                        <i class="fas fa-plus" aria-hidden="true"></i> Nueva Venta Rápida
+                    </button>
+                </div>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="ventas-summary">
+                <div class="summary-card">
+                    <i class="fas fa-dollar-sign"></i>
+                    <div class="summary-content">
+                        <h3>Total Ventas</h3>
+                        <p class="summary-value" id="total-ventas">$0.00</p>
+                        <p class="summary-period">Este mes</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <div class="summary-content">
+                        <h3>Total Gastos</h3>
+                        <p class="summary-value" id="total-gastos">$0.00</p>
+                        <p class="summary-period">Este mes</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <i class="fas fa-chart-line"></i>
+                    <div class="summary-content">
+                        <h3>Balance Neto</h3>
+                        <p class="summary-value" id="balance-neto">$0.00</p>
+                        <p class="summary-period">Este mes</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <i class="fas fa-shopping-cart"></i>
+                    <div class="summary-content">
+                        <h3>Ventas del Día</h3>
+                        <p class="summary-value" id="ventas-hoy">$0.00</p>
+                        <p class="summary-period">Hoy</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="ventas-tabs" role="tablist" aria-label="Selección de tipo de registro">
+                <button class="tab-btn active" data-tab="ventas" role="tab" aria-selected="true" aria-controls="ventas-panel" id="tab-ventas">Ventas</button>
+                <button class="tab-btn" data-tab="gastos" role="tab" aria-selected="false" aria-controls="gastos-panel" id="tab-gastos">Gastos</button>
+            </div>
+
+            <!-- Filters -->
+            <div class="ventas-filters" role="region" aria-labelledby="filters-heading">
+                <h3 id="filters-heading" class="sr-only">Filtros de búsqueda</h3>
+                <div class="filter-group">
+                    <label for="date-from">Desde:</label>
+                    <input type="date" id="date-from" class="filter-input" aria-describedby="date-from-help">
+                    <span id="date-from-help" class="sr-only">Seleccione la fecha de inicio para filtrar registros</span>
+                </div>
+                <div class="filter-group">
+                    <label for="date-to">Hasta:</label>
+                    <input type="date" id="date-to" class="filter-input" aria-describedby="date-to-help">
+                    <span id="date-to-help" class="sr-only">Seleccione la fecha de fin para filtrar registros</span>
+                </div>
+                <div class="filter-group">
+                    <label for="barber-filter">Barbero:</label>
+                    <select id="barber-filter" class="filter-input" aria-describedby="barber-filter-help">
+                        <option value="">Todos</option>
+                        <option value="Barbero 1">Barbero 1</option>
+                        <option value="Barbero 2">Barbero 2</option>
+                        <option value="Barbero 3">Barbero 3</option>
+                    </select>
+                    <span id="barber-filter-help" class="sr-only">Filtrar registros por barbero específico</span>
+                </div>
+                <div class="filter-group">
+                    <label for="payment-filter">Método de Pago:</label>
+                    <select id="payment-filter" class="filter-input" aria-describedby="payment-filter-help">
+                        <option value="">Todos</option>
+                        <option value="efectivo">Efectivo</option>
+                        <option value="tarjeta">Tarjeta</option>
+                        <option value="transferencia">Transferencia</option>
+                    </select>
+                    <span id="payment-filter-help" class="sr-only">Filtrar registros por método de pago</span>
+                </div>
+                <div class="filter-group">
+                    <label for="search-ventas" class="sr-only">Buscar en registros</label>
+                    <input type="text" id="search-ventas" placeholder="Buscar..." class="filter-input search-input" aria-describedby="search-help">
+                    <span id="search-help" class="sr-only">Buscar por descripción, cliente o barbero</span>
+                </div>
+                <button class="filter-btn" id="clear-filters" aria-describedby="clear-filters-help">
+                    <i class="fas fa-times" aria-hidden="true"></i> Limpiar Filtros
+                </button>
+                <span id="clear-filters-help" class="sr-only">Eliminar todos los filtros aplicados</span>
+            </div>
+
+            <!-- Table Container -->
+            <div class="ventas-table-container">
+                <div class="table-header">
+                    <div class="table-info">
+                        <span id="table-count">Mostrando 0 registros</span>
+                    </div>
+                    <div class="table-controls">
+                        <select id="sort-by" class="sort-select">
+                            <option value="fecha-desc">Fecha (nuevo primero)</option>
+                            <option value="fecha-asc">Fecha (antiguo primero)</option>
+                            <option value="monto-desc">Monto (mayor primero)</option>
+                            <option value="monto-asc">Monto (menor primero)</option>
+                        </select>
+                        <select id="items-per-page" class="items-select">
+                            <option value="10">10 por página</option>
+                            <option value="25">25 por página</option>
+                            <option value="50">50 por página</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="table-wrapper">
+                    <table class="ventas-table" id="ventas-table">
+                        <thead>
+                            <tr>
+                                <th data-sort="fecha">Fecha</th>
+                                <th data-sort="tipo">Tipo</th>
+                                <th data-sort="descripcion">Descripción</th>
+                                <th data-sort="barbero">Barbero</th>
+                                <th data-sort="cliente">Cliente</th>
+                                <th data-sort="monto">Monto</th>
+                                <th data-sort="metodo">Método</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ventas-tbody">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination" id="pagination">
+                    <button class="page-btn" id="prev-page" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <span id="page-info">Página 1 de 1</span>
+                    <button class="page-btn" id="next-page" disabled>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inventario Section -->
+        <section class="inventario-section" id="inventario-section" style="display: none;">
+            <div class="inventario-header">
+                <div class="inventario-info">
+                    <h2>Gestión de Inventario</h2>
+                    <p id="inventario-count">Productos registrados: 3</p>
+                </div>
+                <div class="inventario-actions">
+                    <button class="add-inventario-btn" id="add-inventario-btn">
+                        <i class="fas fa-plus"></i> Nuevo Producto
+                    </button>
+                </div>
+            </div>
+            <div class="inventario-content">
+                <div class="empty-state" id="inventario-empty" style="display: none;">
+                    <div class="empty-state-content">
+                        <i class="fas fa-boxes"></i>
+                        <h3>No tienes productos en inventario</h3>
+                        <p>Crea el primero ahora</p>
+                        <button class="create-first-btn" id="create-first-inventario-btn">Crear el primero ahora</button>
+                    </div>
+                </div>
+                <div class="inventario-table-container" id="inventario-table-container">
+                    <table class="inventario-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Categoría</th>
+                                <th>Cantidad</th>
+                                <th>Precio Compra</th>
+                                <th>Precio Venta</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventario-tbody">
+                            <tr>
+                                <td>Champú Profesional</td>
+                                <td>Cuidado del cabello</td>
+                                <td>25</td>
+                                <td>$15.50</td>
+                                <td>$25.00</td>
+                                <td><span class="stock-status in-stock">En stock</span></td>
+                                <td>
+                                    <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Tinte Rubio</td>
+                                <td>Coloración</td>
+                                <td>8</td>
+                                <td>$35.00</td>
+                                <td>$55.00</td>
+                                <td><span class="stock-status in-stock">En stock</span></td>
+                                <td>
+                                    <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Gel para cabello</td>
+                                <td>Estilizado</td>
+                                <td>0</td>
+                                <td>$8.50</td>
+                                <td>$15.00</td>
+                                <td><span class="stock-status low-stock">Stock bajo</span></td>
+                                <td>
+                                    <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Side Panel -->
+    <div class="side-panel" id="side-panel">
+        <div class="panel-header">
+            <h3>Menú</h3>
+        </div>
+        <ul class="menu-list">
+            <li><i class="fas fa-tachometer-alt"></i> Panel General</li>
+            <li><i class="fas fa-calendar-alt"></i> Turnos</li>
+            <li><i class="fas fa-users"></i> Clientes</li>
+            <li><i class="fas fa-user-tie"></i> Empleados</li>
+            <li><i class="fas fa-cut"></i> Servicios</li>
+            <li><i class="fas fa-cash-register"></i> Ventas</li>
+            <li><i class="fas fa-boxes"></i> Existencias</li>
+            <li><i class="fas fa-cog"></i> Configuración</li>
+            <li><i class="fas fa-sign-out-alt"></i> Cerrar sesión</li>
+        </ul>
+    </div>
+
+    <!-- Modal for New Employee -->
+    <div class="modal-overlay" id="empleado-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Nuevo empleado</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="empleado-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" placeholder="Ej. Lean Martínez">
+                    </div>
+                    <div class="form-group">
+                        <label for="dni">Documento de Identidad (DNI) — Iniciar sesión</label>
+                        <input type="text" id="dni" placeholder="Ejemplo 34567890">
+                    </div>
+                    <div class="password-info">
+                        <label>Contraseña de Acceso</label>
+                        <div class="password-display" id="password-display">Admin1234</div>
+                        <small>El empleado iniciará sesión usando su DNI y esta contraseña.</small>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="comision">Porcentaje de Comisión (%)</label>
+                            <input type="number" id="comision" placeholder="10" min="0" max="100">
+                        </div>
+                        <div class="form-group half">
+                            <label for="prioridad">Prioridad (1 es el primero)</label>
+                            <input type="number" id="prioridad" placeholder="1" min="1">
+                        </div>
+                    </div>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="activo" checked>
+                            Empleado Activo
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary">Cancelar</button>
+                <button class="btn-primary">Crear empleado</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for New Client -->
+    <div class="modal-overlay" id="cliente-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Nuevo cliente</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="cliente-form">
+                    <div class="form-group">
+                        <label for="cliente-nombre">Nombre completo</label>
+                        <input type="text" id="cliente-nombre" placeholder="Ej. Juan Pérez">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="cliente-telefono">Teléfono</label>
+                            <input type="tel" id="cliente-telefono" placeholder="Ejemplo 11 1234 5678">
+                        </div>
+                        <div class="form-group half">
+                            <label for="cliente-email">Correo electrónico <span class="optional">(opcional)</span></label>
+                            <input type="email" id="cliente-email" placeholder="juan@email.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cliente-notas">Notas internas</label>
+                        <textarea id="cliente-notas" placeholder="Preferencias del cliente..." rows="4"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary">Cancelar</button>
+                <button class="btn-primary">Guardar cliente</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for New Service -->
+    <div class="modal-overlay" id="servicio-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Nuevo Servicio</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="servicio-form">
+                    <div class="form-group">
+                        <label for="servicio-nombre">Nombre del servicio</label>
+                        <input type="text" id="servicio-nombre" placeholder="Ej. Corte Clásico" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="servicio-precio">Precio ($)</label>
+                        <input type="number" id="servicio-precio" placeholder="0" min="0" step="0.01">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary">Cancelar</button>
+                <button class="btn-primary" id="servicio-save-btn">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Quick Sale -->
+    <!--
+    Especificación del modal de Venta Rápida:
+    - Selector Tipo de Monto: Ingreso (+) (verde, por defecto) / Gasto (-) (rojo)
+    - Estado Ingreso (+): muestra campos barbero, cliente, origen, método pago, fecha, monto, descripción
+    - Estado Gasto (-): oculta campos específicos de ingreso, muestra solo fecha, monto, descripción
+    - Validación: campos obligatorios marcados, formato monetario, errores inline
+    - Accesibilidad: foco inicial, tab index correcto, ARIA labels
+    - Submit: indica si es ingreso o gasto para lógica backend/DB
+    -->
+    <div class="modal-overlay" id="venta-modal">
+        <div class="modal venta-rapida-modal">
+            <div class="modal-header">
+                <h3>Registrar Transacción</h3>
+                <button class="modal-close" aria-label="Cerrar modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Tipo de Monto Selector -->
+                <div class="tipo-monto-selector">
+                    <button type="button" class="tipo-btn ingreso-btn active" data-tipo="ingreso">
+                        <i class="fas fa-plus-circle"></i> Ingreso (+)
+                    </button>
+                    <button type="button" class="tipo-btn gasto-btn" data-tipo="gasto">
+                        <i class="fas fa-minus-circle"></i> Gasto (-)
+                    </button>
+                </div>
+
+                <form id="venta-form" novalidate>
+                    <!-- Campos específicos para Ingreso -->
+                    <div class="ingreso-fields">
+                        <div class="form-group">
+                            <label for="venta-barbero">Barbero Asignado <span class="required">*</span></label>
+                            <select id="venta-barbero" required aria-describedby="barbero-error">
+                                <option value="">Seleccionar barbero</option>
+                                <option value="Barbero 1">Barbero 1</option>
+                                <option value="Barbero 2">Barbero 2</option>
+                                <option value="Barbero 3">Barbero 3</option>
+                            </select>
+                            <div id="barbero-error" class="error-message" role="alert"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="venta-cliente">Asignar Cliente <span class="optional">(opcional)</span></label>
+                            <div class="cliente-input-group">
+                                <input type="text" id="venta-cliente" placeholder="Nombre del cliente" list="clientes-list" aria-describedby="cliente-error">
+                                <datalist id="clientes-list">
+                                    <!-- Will be populated by JavaScript -->
+                                </datalist>
+                                <button type="button" class="nuevo-cliente-btn" id="nuevo-cliente-btn" aria-label="Crear nuevo cliente">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <div id="cliente-error" class="error-message" role="alert"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Origen del Ingreso</label>
+                            <div class="origen-buttons">
+                                <button type="button" class="origen-btn active" data-origen="servicio">
+                                    <i class="fas fa-cut"></i> Venta de Servicio
+                                </button>
+                                <button type="button" class="origen-btn" data-origen="manual">
+                                    <i class="fas fa-hand-holding-usd"></i> Venta/Ingreso Manual
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="venta-metodo">Método de Pago</label>
+                            <select id="venta-metodo" aria-describedby="metodo-error">
+                                <option value="efectivo">Efectivo</option>
+                                <option value="tarjeta">Tarjeta</option>
+                                <option value="transferencia">Transferencia</option>
+                            </select>
+                            <div id="metodo-error" class="error-message" role="alert"></div>
+                        </div>
+                    </div>
+
+                    <!-- Campos comunes -->
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="venta-fecha">Fecha de Transacción <span class="required">*</span></label>
+                            <input type="date" id="venta-fecha" required aria-describedby="fecha-error">
+                            <div id="fecha-error" class="error-message" role="alert"></div>
+                        </div>
+                        <div class="form-group half">
+                            <label for="venta-monto">Monto <span class="required">*</span></label>
+                            <div class="monto-input-group">
+                                <span class="monto-symbol">$</span>
+                                <input type="number" id="venta-monto" placeholder="0.00" min="0.01" step="0.01" required aria-describedby="monto-error">
+                            </div>
+                            <div id="monto-error" class="error-message" role="alert"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="venta-descripcion">Descripción <span class="optional">(opcional)</span></label>
+                        <textarea id="venta-descripcion" placeholder="Detalles adicionales..." rows="3" aria-describedby="descripcion-error"></textarea>
+                        <div id="descripcion-error" class="error-message" role="alert"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" id="venta-cancel-btn">Cancelar</button>
+                <button type="button" class="btn-primary" id="venta-save-btn">Registrar Transacción</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
