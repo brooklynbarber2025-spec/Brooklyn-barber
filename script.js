@@ -101,9 +101,12 @@ let ventas = [
     }
 ];
 
+// Turnos data storage
+let turnos = [];
+
 let currentPage = 1;
 let itemsPerPage = 10;
-let currentTab = 'ventas';
+let currentTab = 'venta';
 let currentSort = { column: 'fecha', direction: 'desc' };
 
 // Menu item click functionality
@@ -135,6 +138,7 @@ document.querySelectorAll('.menu-list li').forEach(item => {
             dashboardModules.style.display = 'grid';
         } else if (text === 'Turnos') {
             turnosSection.style.display = 'block';
+            updateTurnosTable();
         } else if (text === 'Empleados') {
             empleadosSection.style.display = 'block';
             updateEmpleadosTable();
@@ -319,31 +323,14 @@ function resetForm() {
 
 // Show success message
 function showSuccessMessage(message) {
-    // Create a simple toast notification
-    const toast = document.createElement('div');
-    toast.textContent = message;
-    toast.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: #d4edda;
-        color: #155724;
-        padding: 12px 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        z-index: 3000;
-        font-weight: 600;
-        animation: slideInRight 0.3s ease;
-    `;
-
-    document.body.appendChild(toast);
-
-    setTimeout(() => {
-        toast.style.animation = 'slideOutRight 0.3s ease';
+    const successDiv = document.getElementById('success-message');
+    if (successDiv) {
+        successDiv.textContent = message;
+        successDiv.style.display = 'block';
         setTimeout(() => {
-            document.body.removeChild(toast);
-        }, 300);
-    }, 3000);
+            successDiv.style.display = 'none';
+        }, 3000);
+    }
 }
 
 // Show error message
@@ -763,6 +750,18 @@ function switchTab(tab) {
         btn.classList.remove('active');
     });
     document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+
+    // Update summary card titles based on current tab
+    const summaryTitles = document.querySelectorAll('.summary-card h4');
+    if (summaryTitles.length >= 2) {
+        if (tab === 'venta') {
+            summaryTitles[0].textContent = 'Total Ventas';
+            summaryTitles[1].textContent = 'Número de Ventas';
+        } else {
+            summaryTitles[0].textContent = 'Total Gastos';
+            summaryTitles[1].textContent = 'Número de Gastos';
+        }
+    }
 
     updateVentasTable();
     updateVentasSummary();
@@ -1440,29 +1439,43 @@ function resetVentaRapidaForm() {
 
 function saveVentaRapida() {
     // Get form values
-    const tipo = document.querySelector('.tipo-btn.active')?.dataset.tipo || 'gasto';
-    const clienteNombre = document.getElementById('cliente-nombre').value.trim();
-    const clienteSelect = document.getElementById('cliente-select').value;
-    const servicio = document.getElementById('servicio').value;
-    const monto = parseFloat(document.getElementById('monto').value);
-    const metodoPago = document.getElementById('metodo-pago').value;
-    const notas = document.getElementById('notas').value.trim();
+    const tipo = document.querySelector('.tipo-btn.active')?.dataset.tipo || 'ingreso';
+    const clienteNombre = document.getElementById('venta-cliente').value.trim();
+    const barbero = document.getElementById('venta-barbero').value;
+    const monto = parseFloat(document.getElementById('venta-monto').value);
+    const metodoPago = document.getElementById('venta-metodo').value;
+    const fecha = document.getElementById('venta-fecha').value;
+    const descripcion = document.getElementById('venta-descripcion').value.trim();
 
     // Validation
     let isValid = true;
     let errors = [];
 
-    // Client validation
-    if (!clienteNombre && !clienteSelect) {
-        errors.push('Debe seleccionar o ingresar un cliente');
-        showFieldError('cliente-nombre', 'Cliente es obligatorio');
+    // For ingreso, barbero is required
+    if (tipo === 'ingreso' && !barbero) {
+        errors.push('El barbero es obligatorio para ingresos');
+        showFieldError('venta-barbero', 'Barbero es obligatorio');
+        isValid = false;
+    }
+
+    // Client validation for ingreso
+    if (tipo === 'ingreso' && !clienteNombre) {
+        errors.push('El cliente es obligatorio para ingresos');
+        showFieldError('venta-cliente', 'Cliente es obligatorio');
         isValid = false;
     }
 
     // Amount validation
     if (isNaN(monto) || monto <= 0) {
         errors.push('El monto debe ser un número mayor a 0');
-        showFieldError('monto', 'Monto inválido');
+        showFieldError('venta-monto', 'Monto inválido');
+        isValid = false;
+    }
+
+    // Date validation
+    if (!fecha) {
+        errors.push('La fecha es obligatoria');
+        showFieldError('venta-fecha', 'Fecha es obligatoria');
         isValid = false;
     }
 
@@ -1471,11 +1484,8 @@ function saveVentaRapida() {
         return;
     }
 
-    // Determine final client name
-    const clienteFinal = clienteNombre || clienteSelect;
-
-    // Create new client if it's a new one
-    if (clienteNombre && !clientes.some(c => c.nombre === clienteNombre)) {
+    // Create new client if it's a new one and tipo is ingreso
+    if (tipo === 'ingreso' && clienteNombre && !clientes.some(c => c.nombre === clienteNombre)) {
         const newCliente = {
             nombre: clienteNombre,
             telefono: '',
@@ -1487,26 +1497,41 @@ function saveVentaRapida() {
         updateClientesTable();
     }
 
-    // Create new sale
+    // Confirmation for gasto
+    if (tipo === 'gasto') {
+        const confirmMessage = `¿Está seguro de que desea registrar este gasto de $${monto.toFixed(2)} por "${descripcion}"?`;
+        if (!confirm(confirmMessage)) {
+            return;
+        }
+    }
+
+    // Create new transaction
     const newVenta = {
         id: Date.now(),
-        tipo: tipo,
-        fecha: new Date().toISOString().split('T')[0],
+        tipo: tipo === 'ingreso' ? 'venta' : 'gasto',
+        fecha: fecha,
         hora: new Date().toTimeString().slice(0, 5),
-        cliente: clienteFinal,
-        servicio: servicio || (tipo === 'ingreso' ? 'Venta directa' : 'Gasto general'),
-        barbero: tipo === 'ingreso' && empleados.length > 0 ? empleados[0].nombre : '',
+        cliente: tipo === 'ingreso' ? clienteNombre : '',
+        servicio: tipo === 'ingreso' ? 'Venta rápida' : 'Gasto',
+        barbero: tipo === 'ingreso' ? barbero : '',
         monto: monto,
         metodoPago: metodoPago,
-        notas: notas
+        notas: descripcion
     };
 
     ventas.push(newVenta);
     updateVentasTable();
     updateVentasSummary();
-    closeVentaRapidaModal();
 
-    showSuccessMessage(`${tipo === 'ingreso' ? 'Venta' : 'Gasto'} registrada exitosamente`);
+    // Show success message
+    showSuccessMessage(`${tipo === 'ingreso' ? 'Ingreso' : 'Gasto'} ingresado exitosamente`);
+
+    // Close modal after a delay to show the message
+    setTimeout(() => {
+        closeVentaRapidaModal();
+        // Switch to the appropriate tab to show the newly saved transaction
+        switchTab(tipo === 'ingreso' ? 'venta' : 'gasto');
+    }, 2000);
 }
 
 function showFieldError(fieldId, message) {
@@ -1518,3 +1543,277 @@ function showFieldError(fieldId, message) {
         }
     }
 }
+
+// Turnos functionality
+
+// Update turnos table
+function updateTurnosTable() {
+    const turnosContainer = document.getElementById('turnos-container');
+    if (!turnosContainer) return;
+
+    // Generate time slots from 09:00 to 22:00 with 40-minute intervals
+    const timeSlots = [];
+    let currentTime = new Date();
+    currentTime.setHours(9, 0, 0, 0); // Start at 09:00
+
+    const endTime = new Date();
+    endTime.setHours(22, 0, 0, 0); // End at 22:00
+
+    while (currentTime <= endTime) {
+        timeSlots.push(currentTime.toTimeString().slice(0, 5)); // HH:MM format
+        currentTime.setMinutes(currentTime.getMinutes() + 40);
+    }
+
+    // Create table HTML
+    let tableHTML = '<table class="turnos-table"><thead><tr><th>Hora</th>';
+
+    // Add barber columns
+    empleados.forEach(empleado => {
+        tableHTML += `<th>${empleado.nombre}</th>`;
+    });
+
+    tableHTML += '</tr></thead><tbody>';
+
+    // Add time rows
+    timeSlots.forEach(time => {
+        tableHTML += `<tr><td class="time-slot">${time}</td>`;
+
+        // Add cells for each barber
+        empleados.forEach((empleado, barberIndex) => {
+            // Check if there's an existing turno for this time and barber
+            const existingTurno = turnos.find(turno =>
+                turno.hora === time && turno.barbero === empleado.nombre
+            );
+
+            let cellContent = '';
+            if (existingTurno) {
+                cellContent = `<div class="turno-occupied">
+                    <div class="turno-info">
+                        <strong>${existingTurno.cliente}</strong><br>
+                        <small>${existingTurno.servicio}</small>
+                    </div>
+                    <button class="action-btn edit-btn" onclick="editTurno('${existingTurno.id}')">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                </div>`;
+            } else {
+                cellContent = `<button class="add-turno-btn" onclick="openNuevoTurnoModal('${time}', '${empleado.nombre}')">
+                    <i class="fas fa-plus"></i>
+                </button>`;
+            }
+
+            tableHTML += `<td class="turno-cell ${existingTurno ? 'occupied' : 'available'}">${cellContent}</td>`;
+        });
+
+        tableHTML += '</tr>';
+    });
+
+    tableHTML += '</tbody></table>';
+
+    turnosContainer.innerHTML = tableHTML;
+}
+
+// Open new turno modal
+function openNuevoTurnoModal(time, barbero) {
+    const modal = document.getElementById('turno-modal');
+    if (!modal) return;
+
+    // Reset form
+    resetTurnoForm();
+
+    // Set default values
+    document.getElementById('turno-barbero').value = barbero;
+    document.getElementById('turno-hora').value = time;
+    document.getElementById('turno-fecha').value = new Date().toISOString().split('T')[0];
+
+    // Populate dropdowns
+    populateTurnoClientes();
+    populateTurnoServicios();
+    populateTurnoBarberos();
+
+    // Show modal
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // Focus on first input
+    setTimeout(() => {
+        document.getElementById('turno-cliente').focus();
+    }, 100);
+}
+
+// Edit turno (placeholder function)
+function editTurno(id) {
+    alert('Funcionalidad de edición próximamente disponible');
+}
+
+// Populate turno clientes dropdown
+function populateTurnoClientes() {
+    const datalist = document.getElementById('turno-clientes-list');
+    if (!datalist) return;
+
+    datalist.innerHTML = '';
+
+    clientes.forEach(cliente => {
+        const option = document.createElement('option');
+        option.value = cliente.nombre;
+        datalist.appendChild(option);
+    });
+}
+
+// Populate turno servicios dropdown
+function populateTurnoServicios() {
+    const select = document.getElementById('turno-servicio');
+    if (!select) return;
+
+    select.innerHTML = '<option value="">Seleccionar servicio</option>';
+
+    servicios.forEach(servicio => {
+        const option = document.createElement('option');
+        option.value = servicio.nombre;
+        option.textContent = `${servicio.nombre} - $${servicio.precio.toFixed(2)}`;
+        select.appendChild(option);
+    });
+}
+
+// Populate turno barberos dropdown
+function populateTurnoBarberos() {
+    const select = document.getElementById('turno-barbero');
+    if (!select) return;
+
+    select.innerHTML = '<option value="">Seleccionar barbero</option>';
+
+    empleados.forEach(empleado => {
+        const option = document.createElement('option');
+        option.value = empleado.nombre;
+        option.textContent = empleado.nombre;
+        select.appendChild(option);
+    });
+}
+
+// Reset turno form
+function resetTurnoForm() {
+    const inputs = ['turno-cliente', 'turno-telefono', 'turno-servicio', 'turno-precio', 'turno-barbero', 'turno-fecha', 'turno-hora'];
+    inputs.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) element.value = '';
+    });
+}
+
+// Close turno modal
+function closeTurnoModal() {
+    const modal = document.getElementById('turno-modal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        resetTurnoForm();
+    }
+}
+
+// Save turno
+function saveTurno() {
+    const cliente = document.getElementById('turno-cliente').value.trim();
+    const telefono = document.getElementById('turno-telefono').value.trim();
+    const servicio = document.getElementById('turno-servicio').value;
+    const precio = parseFloat(document.getElementById('turno-precio').value) || 0;
+    const barbero = document.getElementById('turno-barbero').value;
+    const fecha = document.getElementById('turno-fecha').value;
+    const hora = document.getElementById('turno-hora').value;
+
+    // Validation
+    let isValid = true;
+    let errors = [];
+
+    if (!cliente) {
+        errors.push('El cliente es obligatorio');
+        isValid = false;
+    }
+
+    if (!servicio) {
+        errors.push('El servicio es obligatorio');
+        isValid = false;
+    }
+
+    if (!barbero) {
+        errors.push('El barbero es obligatorio');
+        isValid = false;
+    }
+
+    if (!fecha) {
+        errors.push('La fecha es obligatoria');
+        isValid = false;
+    }
+
+    if (!hora) {
+        errors.push('La hora es obligatoria');
+        isValid = false;
+    }
+
+    if (!isValid) {
+        alert('Errores de validación:\n' + errors.join('\n'));
+        return;
+    }
+
+    // Create new turno
+    const newTurno = {
+        id: Date.now().toString(),
+        cliente: cliente,
+        telefono: telefono,
+        servicio: servicio,
+        precio: precio,
+        barbero: barbero,
+        fecha: fecha,
+        hora: hora
+    };
+
+    turnos.push(newTurno);
+
+    // Update table
+    updateTurnosTable();
+
+    // Close modal
+    closeTurnoModal();
+
+    // Show success message
+    showSuccessMessage('Turno creado exitosamente');
+}
+
+// Event listeners for turno modal
+document.addEventListener('DOMContentLoaded', function() {
+    const turnoModal = document.getElementById('turno-modal');
+    const turnoModalClose = turnoModal ? turnoModal.querySelector('.modal-close') : null;
+    const turnoCancelBtn = document.getElementById('turno-cancel-btn');
+    const turnoSaveBtn = document.getElementById('turno-save-btn');
+
+    // Close modal functions
+    if (turnoModalClose) {
+        turnoModalClose.addEventListener('click', closeTurnoModal);
+    }
+
+    if (turnoCancelBtn) {
+        turnoCancelBtn.addEventListener('click', closeTurnoModal);
+    }
+
+    if (turnoModal) {
+        turnoModal.addEventListener('click', function(event) {
+            if (event.target === turnoModal) {
+                closeTurnoModal();
+            }
+        });
+    }
+
+    // Save turno
+    if (turnoSaveBtn) {
+        turnoSaveBtn.addEventListener('click', saveTurno);
+    }
+
+    // Update servicio precio when servicio changes
+    const turnoServicioSelect = document.getElementById('turno-servicio');
+    if (turnoServicioSelect) {
+        turnoServicioSelect.addEventListener('change', function() {
+            const selectedServicio = servicios.find(s => s.nombre === this.value);
+            if (selectedServicio) {
+                document.getElementById('turno-precio').value = selectedServicio.precio.toFixed(2);
+            }
+        });
+    }
+});

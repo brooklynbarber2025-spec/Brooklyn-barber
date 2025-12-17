@@ -1,10 +1,10 @@
 /* General Styles */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    color: #2c3e50;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+    color: #ffffff;
     line-height: 1.6;
 }
 
@@ -19,26 +19,27 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
     padding: 25px 30px;
     border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     margin-bottom: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .header-left h1 {
     margin: 0;
     font-size: 28px;
     font-weight: 700;
-    color: #2c3e50;
+    color: #ffffff;
     letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .header-left p {
     margin: 5px 0;
     font-size: 15px;
-    color: #6c757d;
+    color: #cccccc;
     font-weight: 500;
 }
 
@@ -48,7 +49,7 @@ body {
 }
 
 .nav-btn {
-    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
     color: white;
     border: none;
     padding: 12px 20px;
@@ -57,12 +58,12 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 600;
-    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
 }
 
 .nav-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
 }
 
 .menu-toggle {
@@ -70,12 +71,12 @@ body {
     border: none;
     font-size: 26px;
     cursor: pointer;
-    color: #2c3e50;
+    color: #ffffff;
     transition: color 0.3s ease;
 }
 
 .menu-toggle:hover {
-    color: #3498db;
+    color: #ff6b35;
 }
 
 /* Welcome Block */
@@ -83,37 +84,44 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .welcome-content h2 {
     margin: 0 0 10px 0;
     font-size: 28px;
-    color: #2c3e50;
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .welcome-content p {
     margin: 0;
     font-size: 16px;
-    color: #7f8c8d;
+    color: #cccccc;
+    font-weight: 500;
 }
 
 .quick-sale-btn {
-    background-color: #e74c3c;
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
     color: white;
     border: none;
     padding: 15px 30px;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
 }
 
 .quick-sale-btn:hover {
-    background-color: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
 }
 
 /* Side Panel */
@@ -123,12 +131,13 @@ body {
     right: -350px;
     width: 350px;
     height: 100%;
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
     color: white;
     transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     overflow-y: auto;
     z-index: 1000;
-    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .side-panel.open {
@@ -137,7 +146,7 @@ body {
 
 .panel-header {
     padding: 30px 25px;
-    border-bottom: 2px solid #34495e;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
     background: rgba(255, 255, 255, 0.05);
 }
 
@@ -186,60 +195,69 @@ body {
 }
 
 .module-card {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
     padding: 25px;
     border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     text-align: center;
     transition: all 0.3s ease;
     flex: 1;
     min-width: 180px;
     max-width: 200px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .module-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
 }
 
 .module-card i {
     font-size: 48px;
-    color: #3498db;
+    color: #ff6b35;
     margin-bottom: 15px;
     display: block;
+    background: rgba(255, 107, 53, 0.1);
+    padding: 10px;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 15px auto;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
 }
 
 .module-card h3 {
     margin: 10px 0;
     font-size: 18px;
-    color: #2c3e50;
+    color: #ffffff;
     font-weight: 600;
     letter-spacing: -0.3px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .module-value {
     font-size: 32px;
     font-weight: bold;
-    color: #e74c3c;
+    color: #ff6b35;
     margin: 10px 0;
     display: block;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .module-desc {
     font-size: 13px;
-    color: #6c757d;
+    color: #cccccc;
     font-style: italic;
     font-weight: 400;
 }
 
 /* Turnos Section */
 .turnos-section {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .agenda-header {
@@ -252,13 +270,14 @@ body {
 .agenda-info h2 {
     margin: 0 0 5px 0;
     font-size: 24px;
-    color: #2c3e50;
+    color: #ffffff;
     font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .agenda-info p {
     margin: 0;
-    color: #6c757d;
+    color: #cccccc;
     font-size: 16px;
 }
 
@@ -269,32 +288,33 @@ body {
 }
 
 .date-btn {
-    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
     color: white;
     border: none;
     padding: 10px;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
 }
 
 .date-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
 }
 
 .current-date {
     font-weight: 600;
-    color: #2c3e50;
+    color: #ffffff;
     font-size: 16px;
 }
 
 .day-selector {
     padding: 8px 12px;
-    border: 1px solid #ddd;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
-    background: white;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
     font-size: 14px;
     cursor: pointer;
     transition: border-color 0.3s ease;
@@ -302,20 +322,20 @@ body {
 
 .day-selector:focus {
     outline: none;
-    border-color: #3498db;
+    border-color: #ff6b35;
 }
 
 .agenda-grid table {
     width: 100%;
     border-collapse: collapse;
-    background: white;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .agenda-grid th {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
     color: white;
     padding: 15px;
     text-align: center;
@@ -326,16 +346,17 @@ body {
 .agenda-grid td {
     padding: 15px;
     text-align: center;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: background-color 0.3s ease;
+    color: #ffffff;
 }
 
 .agenda-grid tr:nth-child(even) {
-    background-color: #f8f9fa;
+    background-color: rgba(255, 255, 255, 0.02);
 }
 
 .agenda-grid tr:hover {
-    background-color: #e9ecef;
+    background-color: rgba(255, 107, 53, 0.1);
 }
 
 .add-turno-btn {
@@ -358,11 +379,11 @@ body {
 
 /* Empleados Section */
 .empleados-section {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .empleados-header {
@@ -375,13 +396,14 @@ body {
 .empleados-info h2 {
     margin: 0 0 5px 0;
     font-size: 24px;
-    color: #2c3e50;
+    color: #ffffff;
     font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .empleados-info p {
     margin: 0;
-    color: #6c757d;
+    color: #cccccc;
     font-size: 16px;
 }
 
@@ -392,7 +414,7 @@ body {
 }
 
 .sort-btn {
-    background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
     color: white;
     border: none;
     padding: 12px 20px;
@@ -400,12 +422,12 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 600;
-    box-shadow: 0 4px 15px rgba(127, 140, 141, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
 }
 
 .sort-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(127, 140, 141, 0.4);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
 }
 
 .add-empleado-btn {
@@ -431,19 +453,19 @@ body {
 .empleados-table-container {
     overflow-x: auto;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .empleados-table {
     width: 100%;
     border-collapse: collapse;
-    background: white;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
     border-radius: 10px;
     overflow: hidden;
 }
 
 .empleados-table th {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
     color: white;
     padding: 15px;
     text-align: center;
@@ -454,16 +476,17 @@ body {
 .empleados-table td {
     padding: 15px;
     text-align: center;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: background-color 0.3s ease;
+    color: #ffffff;
 }
 
 .empleados-table tr:nth-child(even) {
-    background-color: #f8f9fa;
+    background-color: rgba(255, 255, 255, 0.02);
 }
 
 .empleados-table tr:hover {
-    background-color: #e9ecef;
+    background-color: rgba(255, 107, 53, 0.1);
 }
 
 .status-badge {
@@ -515,11 +538,11 @@ body {
 
 /* Clientes Section */
 .clientes-section {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .clientes-header {
@@ -532,13 +555,14 @@ body {
 .clientes-info h2 {
     margin: 0 0 5px 0;
     font-size: 24px;
-    color: #2c3e50;
+    color: #ffffff;
     font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .clientes-info p {
     margin: 0;
-    color: #6c757d;
+    color: #cccccc;
     font-size: 16px;
 }
 
@@ -550,17 +574,19 @@ body {
 
 .search-input {
     padding: 12px 15px;
-    border: 2px solid #e9ecef;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     font-size: 16px;
     transition: border-color 0.3s ease;
     width: 250px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
 }
 
 .search-input:focus {
     outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    border-color: #ff6b35;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
 }
 
 .add-cliente-btn {
@@ -594,7 +620,7 @@ body {
 
 .empty-state-content i {
     font-size: 64px;
-    color: #bdc3c7;
+    color: #cccccc;
     margin-bottom: 20px;
     display: block;
 }
@@ -602,18 +628,18 @@ body {
 .empty-state-content h3 {
     margin: 0 0 10px 0;
     font-size: 24px;
-    color: #2c3e50;
+    color: #ffffff;
     font-weight: 600;
 }
 
 .empty-state-content p {
     margin: 0 0 30px 0;
     font-size: 16px;
-    color: #6c757d;
+    color: #cccccc;
 }
 
 .create-first-btn {
-    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
     color: white;
     border: none;
     padding: 15px 30px;
@@ -622,30 +648,30 @@ body {
     transition: all 0.3s ease;
     font-weight: 600;
     font-size: 16px;
-    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
 }
 
 .create-first-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
 }
 
 .clientes-table-container {
     overflow-x: auto;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .clientes-table {
     width: 100%;
     border-collapse: collapse;
-    background: white;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
     border-radius: 10px;
     overflow: hidden;
 }
 
 .clientes-table th {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
     color: white;
     padding: 15px;
     text-align: center;
@@ -656,16 +682,17 @@ body {
 .clientes-table td {
     padding: 15px;
     text-align: center;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: background-color 0.3s ease;
+    color: #ffffff;
 }
 
 .clientes-table tr:nth-child(even) {
-    background-color: #f8f9fa;
+    background-color: rgba(255, 255, 255, 0.02);
 }
 
 .clientes-table tr:hover {
-    background-color: #e9ecef;
+    background-color: rgba(255, 107, 53, 0.1);
 }
 
 /* Accessibility */
@@ -697,14 +724,15 @@ body {
 }
 
 .modal {
-    background: white;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
     border-radius: 15px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     max-width: 500px;
     width: 90%;
     max-height: 90vh;
     overflow-y: auto;
     animation: slideIn 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .modal-header {
@@ -712,13 +740,13 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 25px 30px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .modal-header h3 {
     margin: 0;
     font-size: 24px;
-    color: #2c3e50;
+    color: #ffffff;
     font-weight: 700;
 }
 
@@ -727,7 +755,7 @@ body {
     border: none;
     font-size: 28px;
     cursor: pointer;
-    color: #6c757d;
+    color: #cccccc;
     transition: color 0.3s ease;
 }
 
@@ -747,7 +775,7 @@ body {
     display: block;
     margin-bottom: 8px;
     font-weight: 600;
-    color: #2c3e50;
+    color: #ffffff;
 }
 
 .form-group input[type="text"],
@@ -757,11 +785,13 @@ body {
 .form-group textarea {
     width: 100%;
     padding: 12px 15px;
-    border: 2px solid #e9ecef;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     font-size: 16px;
     transition: border-color 0.3s ease;
     box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
 }
 
 .form-group input[type="text"]:focus,
@@ -770,8 +800,8 @@ body {
 .form-group input[type="email"]:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    border-color: #ff6b35;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
 }
 
 .form-group textarea {
@@ -840,7 +870,7 @@ body {
     justify-content: flex-end;
     gap: 15px;
     padding: 25px 30px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .btn-secondary {
@@ -975,11 +1005,11 @@ body {
 
 /* Ventas Section Styles */
 .ventas-section {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .ventas-header {
@@ -992,13 +1022,14 @@ body {
 .ventas-info h2 {
     margin: 0 0 5px 0;
     font-size: 24px;
-    color: #2c3e50;
+    color: #ffffff;
     font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .ventas-info p {
     margin: 0;
-    color: #6c757d;
+    color: #cccccc;
     font-size: 16px;
 }
 
@@ -1017,11 +1048,11 @@ body {
 }
 
 .summary-card {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     gap: 15px;
@@ -1030,13 +1061,13 @@ body {
 
 .summary-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
 }
 
 .summary-card i {
     font-size: 32px;
-    color: #3498db;
-    background: rgba(52, 152, 219, 0.1);
+    color: #ff6b35;
+    background: rgba(255, 107, 53, 0.1);
     padding: 12px;
     border-radius: 10px;
 }
@@ -1044,20 +1075,20 @@ body {
 .summary-content h3 {
     margin: 0 0 5px 0;
     font-size: 16px;
-    color: #2c3e50;
+    color: #ffffff;
     font-weight: 600;
 }
 
 .summary-value {
     font-size: 24px;
     font-weight: bold;
-    color: #e74c3c;
+    color: #ff6b35;
     margin: 0;
 }
 
 .summary-period {
     font-size: 12px;
-    color: #6c757d;
+    color: #cccccc;
     margin: 2px 0 0 0;
     font-style: italic;
 }
@@ -1066,7 +1097,7 @@ body {
 .ventas-tabs {
     display: flex;
     margin-bottom: 25px;
-    border-bottom: 2px solid #e9ecef;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .tab-btn {
@@ -1075,7 +1106,7 @@ body {
     padding: 12px 24px;
     font-size: 16px;
     font-weight: 600;
-    color: #6c757d;
+    color: #cccccc;
     cursor: pointer;
     transition: all 0.3s ease;
     border-bottom: 3px solid transparent;
@@ -1083,13 +1114,13 @@ body {
 }
 
 .tab-btn.active {
-    color: #3498db;
-    border-bottom-color: #3498db;
+    color: #ff6b35;
+    border-bottom-color: #ff6b35;
 }
 
 .tab-btn:hover:not(.active) {
-    color: #2c3e50;
-    background-color: rgba(52, 152, 219, 0.05);
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 /* Filters */
@@ -1099,9 +1130,9 @@ body {
     gap: 15px;
     margin-bottom: 25px;
     padding: 20px;
-    background: rgba(248, 249, 250, 0.5);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .filter-group {
@@ -1113,21 +1144,23 @@ body {
 .filter-group label {
     font-size: 14px;
     font-weight: 600;
-    color: #2c3e50;
+    color: #ffffff;
 }
 
 .filter-input {
     padding: 10px 12px;
-    border: 2px solid #e9ecef;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     font-size: 14px;
     transition: border-color 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
 }
 
 .filter-input:focus {
     outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    border-color: #ff6b35;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
 }
 
 .filter-btn {
@@ -1152,10 +1185,11 @@ body {
 
 /* Table Container */
 .ventas-table-container {
-    background: white;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .table-header {
@@ -1163,13 +1197,13 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    border-bottom: 1px solid #e9ecef;
-    background: #f8f9fa;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .table-info {
     font-size: 14px;
-    color: #6c757d;
+    color: #cccccc;
     font-weight: 500;
 }
 
@@ -1182,9 +1216,10 @@ body {
 .sort-select,
 .items-select {
     padding: 8px 12px;
-    border: 1px solid #ddd;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 6px;
-    background: white;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
     font-size: 14px;
     cursor: pointer;
 }
@@ -1202,7 +1237,7 @@ body {
 .ventas-table {
     width: 100%;
     border-collapse: collapse;
-    background: white;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
 }
 
 .ventas-table th {
@@ -1248,17 +1283,18 @@ body {
 
 .ventas-table td {
     padding: 15px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: background-color 0.3s ease;
     font-size: 14px;
+    color: #ffffff;
 }
 
 .ventas-table tr:nth-child(even) {
-    background-color: #f8f9fa;
+    background-color: rgba(255, 255, 255, 0.02);
 }
 
 .ventas-table tr:hover {
-    background-color: #e9ecef;
+    background-color: rgba(255, 107, 53, 0.1);
 }
 
 .ventas-table .tipo-badge {
@@ -1286,8 +1322,8 @@ body {
     align-items: center;
     gap: 15px;
     padding: 20px;
-    border-top: 1px solid #e9ecef;
-    background: #f8f9fa;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .page-btn {
@@ -1318,7 +1354,7 @@ body {
 
 .page-info {
     font-size: 14px;
-    color: #6c757d;
+    color: #cccccc;
     font-weight: 500;
 }
 
@@ -1381,9 +1417,9 @@ body {
     gap: 10px;
     margin-bottom: 25px;
     padding: 15px;
-    background: rgba(248, 249, 250, 0.5);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .tipo-btn {
@@ -1391,8 +1427,8 @@ body {
     padding: 12px 20px;
     border: 2px solid transparent;
     border-radius: 8px;
-    background: white;
-    color: #6c757d;
+    background: rgba(255, 255, 255, 0.05);
+    color: #cccccc;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -1472,10 +1508,10 @@ body {
 .origen-btn {
     flex: 1;
     padding: 10px 15px;
-    border: 2px solid #e9ecef;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
-    background: white;
-    color: #6c757d;
+    background: rgba(255, 255, 255, 0.05);
+    color: #cccccc;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -1487,14 +1523,14 @@ body {
 }
 
 .origen-btn.active {
-    border-color: #3498db;
-    background: rgba(52, 152, 219, 0.1);
-    color: #3498db;
+    border-color: #ff6b35;
+    background: rgba(255, 107, 53, 0.1);
+    color: #ff6b35;
 }
 
 .origen-btn:hover:not(.active) {
-    border-color: #3498db;
-    color: #3498db;
+    border-color: #ff6b35;
+    color: #ff6b35;
     transform: translateY(-1px);
 }
 
@@ -1507,7 +1543,7 @@ body {
 .monto-symbol {
     position: absolute;
     left: 12px;
-    color: #6c757d;
+    color: #cccccc;
     font-weight: 600;
     z-index: 1;
 }
@@ -1527,6 +1563,20 @@ body {
     margin-top: 4px;
     font-weight: 500;
     min-height: 16px;
+}
+
+.success-message {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    color: #155724;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 1px solid #c3e6cb;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: 0 4px 15px rgba(21, 87, 36, 0.1);
+    animation: fadeIn 0.5s ease;
 }
 
 /* Additional responsive improvements */
